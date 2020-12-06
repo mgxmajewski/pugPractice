@@ -16,6 +16,9 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(express.static('public'));
+
+app.set('view engine', 'pug');
 
 app.use('/', indexRouter);
 
@@ -35,4 +38,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+app.listen(3000, () => {
+    console.log('The application is running on localhost:3000');
+});
